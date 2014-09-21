@@ -2,13 +2,6 @@
 
 Using fluent-stackprof, you can start and stop [stackprof](https://github.com/tmm1/stackprof) dynamically from outside of fluentd without any configuration changes.
 
-## Installation
-
-```
-$ fluent-gem install fluent-stackprof
-```
-
-
 ## Prerequisite
 
 Ruby 2.1 is required to use `stackprof`. 
@@ -18,6 +11,7 @@ Ruby 2.1 is required to use `stackprof`.
 ```
 <source>
   type debug_agent
+  port 24230
 </source>
 ```
 
@@ -27,18 +21,24 @@ And, `stackprof` gem is required.
 $ fluent-gem install stackprof
 ```
 
+## Installation
+
+```
+$ fluent-gem install fluent-stackprof
+```
+
 ## Usage
 
 Start
 
 ```
-$ fluent-stackprof start
+$ fluent-stackprof start -h localhost -p 24230
 ```
 
 Stop and write a profiling result.
 
 ```
-$ fluent-stackprof stop -o /tmp/fluent-stackprof.dump
+$ fluent-stackprof stop -h localhost -p 24230 -o /tmp/fluent-stackprof.dump
 ```
 
 Then, use `stackprof` to analyze the resulting file:
@@ -55,7 +55,7 @@ The author's blog article is also helpful [Ruby 2.1: Profiling Ruby by @tmm1](ht
 |parameter|description|default|
 |---|---|---|
 |-h, --host HOST|fluent host|127.0.0.1|
-|-p, --port PORT|debug_agent|24230|
+|-p, --port PORT|debug_agent port|24230|
 |-u, --unix PATH|use unix socket instead of tcp||
 |-o, --output PATH|output file|/tmp/fluent-stackprof.txt|
 |-m, --mode MODE|stackprof measure mode. See [stackprof#sampling](https://github.com/tmm1/stackprof#sampling)|cpu|

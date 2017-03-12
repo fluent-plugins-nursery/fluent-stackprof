@@ -2,9 +2,16 @@
 
 Using fluent-stackprof, you can start and stop [stackprof](https://github.com/tmm1/stackprof) dynamically from outside of fluentd without any configuration changes.
 
-## Prerequisite
+## Pareparation for Fluentd
 
-Ruby 2.1 is required to use `stackprof`. 
+You must run your fluentd daemon with `in_debug_agent` plugin and `stackprof` gem installed.
+Also, ruby >= 2.1 is required to run `stackprof`. 
+
+Install `stackprof` gem,
+
+```
+$ fluent-gem install stackprof
+```
 
 `in_debug_agent` plugin is required to be enabled.
 
@@ -15,19 +22,18 @@ Ruby 2.1 is required to use `stackprof`.
 </source>
 ```
 
-And, `stackprof` gem is required. 
+## Install
+
+`fluent-stackprof` is a command line utility which connects to your fluentd daemon from outside (it would be another host).
+Prepare ruby >= 2.1, and install as:
 
 ```
-$ fluent-gem install stackprof
-```
-
-## Installation
-
-```
-$ fluent-gem install fluent-stackprof
+$ gem install fluent-stackprof
+$ gem install stackprof
 ```
 
 ## Usage
+
 
 Start
 

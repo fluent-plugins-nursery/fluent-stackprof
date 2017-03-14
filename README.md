@@ -24,7 +24,7 @@ $ fluent-gem install stackprof
 
 ## Install
 
-`fluent-stackprof` is a command line utility which connects to your fluentd daemon from outside (it would be another host).
+`fluent-stackprof` is a command line utility which connects to your fluentd daemon from outside.
 Prepare ruby >= 2.1, and install as:
 
 ```
